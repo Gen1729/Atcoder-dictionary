@@ -1,15 +1,27 @@
+<script setup lang="ts">
+import { onMounted, ref } from 'vue'
+
+type Ind = {
+  name: string
+  url: string
+}
+
+const pong = ref<Ind[]>()
+
+onMounted(async () => {
+  const res = await fetch('/api/dict?words=A,B,for')
+  if (res.ok) {
+    pong.value = await res.json()
+  }
+})
+</script>
+
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div>
+    <div v-for="(item, index) in pong" :key="index">
+      <a :href="item.url" target="_blank">{{ item.name }}</a>
+    </div>
   </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
+<style></style>
