@@ -14,7 +14,7 @@ const checkedWords = ref<string[]>([])
 const checkedContests = ref<number[]>([])
 
 const lowerDiff = ref<number>(0)
-const higherDiff = ref<number>(3200)
+const higherDiff = ref<number>(3600)
 
 async function searchWords() {
   let s: string = ''
@@ -73,16 +73,21 @@ async function searchWords() {
         <label for="g">G</label>
       </div>
       <div>
-        <input type="checkbox" id="356" value="356" v-model="checkedContests" />
-        <label for="356">356</label>
-        <input type="checkbox" id="357" value="357" v-model="checkedContests" />
-        <label for="357">357</label>
+        <span v-for="num in 16" :key="400 + num - 1">
+          <input
+            type="checkbox"
+            :id="400 + num - 1"
+            :value="400 + num - 1"
+            v-model="checkedContests"
+          />
+          <label :for="400 + num - 1">{{ 400 + num - 1 }}</label>
+        </span>
       </div>
     </div>
     <div class="right">
       <div v-for="(item, index) in problems" :key="index">
         <a :href="item.url" target="_blank"
-          >{{ item.name }} |== Difficluty:{{ item.difficulty }} ==|</a
+          >{{ item.name }} | == Difficluty:{{ item.difficulty }} == |</a
         >
       </div>
     </div>
