@@ -76,11 +76,11 @@ async function searchWords() {
         <span v-for="num in 16" :key="400 + num - 1">
           <input
             type="checkbox"
-            :id="400 + num - 1"
+            :id="(400 + num - 1).toString()"
             :value="400 + num - 1"
             v-model="checkedContests"
           />
-          <label :for="400 + num - 1">{{ 400 + num - 1 }}</label>
+          <label :for="(400 + num - 1).toString()">{{ 400 + num - 1 }}</label>
         </span>
       </div>
     </div>
