@@ -6,7 +6,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 
 // https://vitejs.dev/config/
 
-const API_URL = process.env.VITE_API_URL || 'http://localhost:1323'
+const API_URL = process.env.VITE_API_BASE_URL || 'http://localhost:1323'
 
 export default defineConfig({
   plugins: [vue(), vueJsx()],
