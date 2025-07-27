@@ -5,6 +5,9 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 
 // https://vitejs.dev/config/
+
+const API_URL = process.env.VITE_API_URL || 'http://localhost:1323'
+
 export default defineConfig({
   plugins: [vue(), vueJsx()],
   resolve: {
@@ -15,7 +18,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:1323',
+        target: API_URL,
         changeOrigin: true,
         rewrite: (path: string) => path.replace(/^\/api/, '/'),
       },
